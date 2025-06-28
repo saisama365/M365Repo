@@ -1,0 +1,21 @@
+#Notes for Immutable ID 
+
+$guid = [guid]::New("your-object-guid-here")
+$immutableID = [System.Convert]::ToBase64String($guid.ToByteArray())
+
+#changing on Azure/Entra
+Update-MgUser -UserId "user@domain.com" -OnPremisesImmutableId $immutableID
+
+<#Permissions:
+To use the Update-MgUser cmdlet to change the OnPremisesImmutableId, you need:
+
+Microsoft Graph API permissions:
+User.ReadWrite.All (delegated or application)
+Directory.AccessAsUser.All (if using delegated access)
+Admin consent is required for these permissions.
+You must be signed in as a user with one of the following roles:
+
+Global Administrator
+Privileged Role Administrator
+User Administrator
+#####>

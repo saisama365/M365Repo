@@ -1,0 +1,14 @@
+#Connect to your M365 tenant
+Connect-ExchangeOnline
+
+#This setting turns the External tagging to On across your tenant.
+Set-ExternalInOutlook -Enabled $true
+
+#verification of Enablement
+Get-ExternalInOutlook
+
+#to Exempt any domain from External Tagging , run the following and remove the # mark.
+#Set-ExternalInOutlook -AllowList  @{Add="lazym365admin.com", "abc.com"}
+
+#to Remove the exemption you can run the following and remove # mark.
+#Set-ExternalInOutlook -AllowList  @{Remove="lazym365admin.com", "abc.com"}
